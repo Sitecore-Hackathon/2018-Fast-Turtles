@@ -3,6 +3,7 @@ using System.Linq;
 using ContentExplorer.Model.JSS;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.LayoutService.Configuration;
 using Sitecore.LayoutService.ItemRendering.Pipelines.GetLayoutServiceContext;
 using Sitecore.Links;
 using Sitecore.Workflows;
@@ -26,19 +27,20 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
             if (renderedItem == null || database == null)
                 return;
 
-            var outputObject = new CurrentItemModel();
-            outputObject.CreatedBy = renderedItem.Statistics.CreatedBy;
-            outputObject.UpdatedBy = renderedItem.Statistics.UpdatedBy;
-            outputObject.CountOfVersions = renderedItem.Versions.Count;
-            outputObject.CurrentVersion = renderedItem.Version.Number;
+            var outputObject = new CurrentItemModel
+            {
+                CreatedBy = renderedItem.Statistics.CreatedBy,
+                UpdatedBy = renderedItem.Statistics.UpdatedBy,
+                CountOfVersions = renderedItem.Versions.Count,
+                CurrentVersion = renderedItem.Version.Number,
+                IsPublished = !renderedItem.Publishing.NeverPublish,
+                WorkflowState = String.Empty
+            };
 
-            IWorkflow workflow = database.WorkflowProvider.GetWorkflow(renderedItem);
-            WorkflowState state = workflow.GetState(renderedItem);
+            //IWorkflow workflow = database.WorkflowProvider.GetWorkflow(renderedItem);
+            //WorkflowState state = workflow.GetState(renderedItem);
+            //outputObject.WorkflowState = state.DisplayName;
 
-            outputObject.WorkflowState = state.DisplayName;
-
-            outputObject.IsPublished = !renderedItem.Publishing.NeverPublish;
-            
             args.ContextData.Add(CurrentItemObjectKey, outputObject);
         }
     }
