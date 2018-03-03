@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,8 @@
             this.archetypeNodeData = {
               key: getNextKey(), // assign the key based on the number of nodes
               name: "(new person)",
-              title: ""
+              title: "",
+              icon: "../images/1.png"
             };
             return go.ClickCreatingTool.prototype.insertPart.call(this, loc);
           },
@@ -334,7 +335,7 @@
 </head>
 <body onload="init()">
 <div id="sample">
-  <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 500px"></div>
+  <div id="myDiagramDiv" style="background-color: #fff; border: solid 1px black; height: 1000px"></div>
   <div>
     <div id="myInspector">
 
@@ -379,10 +380,18 @@
     <textarea id="mySavedModel" style="width:100%;height:250px">
 { "class": "go.TreeModel",
   "nodeDataArray": [
-{"key":1, "name":"Stella Payne Diaz", "title":"CEO"},
-{"key":2, "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":1},
+{"key":"{AD490A3D-9559-4E83-B058-23AC5C3D5B90}", "name":"Home", "title":"CEO"},
+{"key":"{25A870B0-515C-438E-891D-82C4CAEE5240}", "name":"Content Page 1", "title":"Content Page 1", "parent":"{AD490A3D-9559-4E83-B058-23AC5C3D5B90}"},
+{"key":"{14623656-2E68-44BC-A8D1-C72FB7B5BE3A}", "name":"Content Page 1 1", "title":"Content Page 1 Subpage 1", "parent":"{25A870B0-515C-438E-891D-82C4CAEE5240}"},
+{"key":"{6BFF914E-493E-4820-B8EE-3E32304ADAA5}", "name":"Content Page 1 1 1", "title":"Content Page 1 1 1", "parent":"{14623656-2E68-44BC-A8D1-C72FB7B5BE3A}"},
+{"key":"{C1024D40-3E84-4C12-B4E8-3CE9CD4DFF63}", "name":"Content Page 1 1", "title":"Content Page 1 1 2", "parent":"{14623656-2E68-44BC-A8D1-C72FB7B5BE3A}"},
+
+{"key":"{D64EB3B5-2212-4F3A-8BF6-4EFADB411C60}", "name":"Content Page 1 2", "title":"Content Page 1 Subpage 2", "parent":"{25A870B0-515C-438E-891D-82C4CAEE5240}"},
+{"key":"{092E927A-C7AB-45EA-A234-A2CF67F8D19C}", "name":"Content Page 1 3", "title":"Content Page 1 Subpage 3", "parent":"{25A870B0-515C-438E-891D-82C4CAEE5240}"},
+
+{"key":"{B1C43929-DF8C-4631-BC5E-BF5C6F7ECABD}", "name":"Content Page 2", "title":"Content Page 2", "parent":"{AD490A3D-9559-4E83-B058-23AC5C3D5B90}"},
 {"key":3, "name":"Meg Meehan Hoffa", "title":"Sales", "parent":2},
-{"key":4, "name":"Peggy Flaming", "title":"VP Engineering", "parent":1},
+{"key":4, "name":"Peggy Flaming", "title":"VP Engineering", "parent":"{AD490A3D-9559-4E83-B058-23AC5C3D5B90}"},
 {"key":5, "name":"Saul Wellingood", "title":"Manufacturing", "parent":4},
 {"key":6, "name":"Al Ligori", "title":"Marketing", "parent":2},
 {"key":7, "name":"Dot Stubadd", "title":"Sales Rep", "parent":3},
