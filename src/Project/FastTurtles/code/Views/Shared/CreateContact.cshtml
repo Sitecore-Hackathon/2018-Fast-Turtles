@@ -1,12 +1,22 @@
-﻿@model FastTurtles.Model.ContactViewModel
-<div class="row mt-4">
-    @using (Html.BeginRouteForm(Sitecore.Mvc.Configuration.MvcSettings.SitecoreRouteName, FormMethod.Post))
+﻿@using Sitecore.Mvc.Configuration
+@model FastTurtles.Model.ContactViewModel
+<div class="row">
+    @using (Html.BeginRouteForm(MvcSettings.SitecoreRouteName, FormMethod.Post, new { @class = string.Empty }))
     {
         @Html.Sitecore().FormHandler("Sample", "AddContactUser")
-        @Html.EditorFor(x => x.Email)
-        @Html.EditorFor(x => x.FirstName)
-        @Html.EditorFor(x => x.LastName)
+        <div class="form-group">
+            @Html.LabelFor(x => x.Email, new { @class = "control-label", @for = "Email" })
+            @Html.EditorFor(x => x.Email, new { @class = "form-control", type = "email", @placeholder = "Email" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.FirstName, new { @class = "control-label", @for = "FirstName" })
+            @Html.EditorFor(x => x.FirstName, new { @class = "form-control", @placeholder = "First name" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.LastName, new { @class = "control-label", @for = "LastName" })
+            @Html.EditorFor(x => x.LastName, new { @class = "form-control", @placeholder = "Last name" })
+        </div>
 
-        <input type="submit" />
+        <button type="submit" class="btn btn-default">Add Contact</button>
     }
-</div>  
+</div>
