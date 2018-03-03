@@ -2,6 +2,7 @@
 using Sitecore.Analytics.Tracking;
 using Sitecore.XConnect;
 using System;
+using System.Collections.Generic;
 using System.Net.Mail;
 using Sitecore.XConnect.Client;
 
@@ -63,24 +64,7 @@ namespace ContentExplorer.Processors.Session
             }
         }
 
-        public Sitecore.XConnect.Contact GetContactByIdentifier(string identifier)
-        {
-            using (XConnectClient client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
-            {
-                try
-                {
-                    var reference = new IdentifiedContactReference("website", identifier);
-
-                    return client.Get<Sitecore.XConnect.Contact>(reference, new ContactExpandOptions() { });
-                }
-                catch (XdbExecutionException ex)
-                {
-                    // Manage exceptions
-                }
-
-                return null;
-            }
-        }
+        
 
         private bool IsValidEmail(string email)
         {
@@ -92,6 +76,29 @@ namespace ContentExplorer.Processors.Session
             catch
             {
                 return false;
+            }
+        }
+
+        public void Example()
+        {
+            using (Sitecore.XConnect.Client.XConnectClient client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            {
+                try
+                {
+                    var contact = new Sitecore.XConnect.Contact(
+                        new Sitecore.XConnect.ContactIdentifier("twitter", "myrtlesitecore", Sitecore.XConnect.ContactIdentifierType.Known)
+                    );
+
+                    client.AddContactIdentifier(contact, new Sitecore.XConnect.ContactIdentifier("ad-network", "ABC123456", Sitecore.XConnect.ContactIdentifierType.Anonymous));
+
+                    IReadOnlyCollection<Sitecore.XConnect.ContactIdentifier> identifiers = contact.Identifiers;
+
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    // Manage exception
+                }
             }
         }
     }

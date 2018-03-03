@@ -1,12 +1,6 @@
 ﻿<div class="row mt-4">
-    @Html.Sitecore().DynamicPlaceholder("column", AddColumn(), count: 3, maxCount: 3)
-</div>  
-@functions
-{
-    TagBuilder AddColumn()
-    {
-        var tagBuilder = new TagBuilder("div");
-        tagBuilder.AddCssClass("col-lg-4 col-sm-12");
-        return tagBuilder;
-    }
-}
+    <div class="col-lg-4 col-sm-12">@Html.Sitecore().DynamicPlaceholder("left-column")</div>
+    <div class="col-lg-4 col-sm-12">@Html.Sitecore().DynamicPlaceholder("middle-column")</div>
+    <div class="col-lg-4 col-sm-12">@Html.Sitecore().DynamicPlaceholder("right-column")</div>
+    
+</div> 
