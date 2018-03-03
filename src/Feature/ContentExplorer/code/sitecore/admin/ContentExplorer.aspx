@@ -140,7 +140,7 @@
     <div class="disable-page" style="display: none"></div>
     <div class="loader-indicator" style="display: none"></div>
     <form id="form1" class="form-inline" runat="server">
-        <div class="row marging-20">
+        <div class="marging-20">
             <div class="form-group">
                 <asp:TextBox ID="IdentifierText" CssClass="form-control" runat="server" Width="224px" TextMode="Email" placeholder="Identifier" />
             </div>
