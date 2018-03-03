@@ -48,10 +48,10 @@
                                         <div>
                                             {{#each this.fields}}	                                                
                                                 {{#if this.value.src}}	
-                                                <div>{{@key}}</div>	
+                                                <div><b>{{@key}}:</b></div>	
                                                 <div><img src="{{{this.value.src}}}" alt="{{this.value.alt}}" style="width: 100%;" /></div>	
                                                 {{else}}
-                                                <div>{{@key}}</div>	
+                                                <div><b>{{@key}}:</b></div>	
                                                 <div>{{{this.value}}}</div>	
                                                 {{/if}}			
                                                 
@@ -61,8 +61,9 @@
                                     {{else}}
                                         <div class="not-found mb_20">Component doesn't have any datasource fields</div>
                                     {{/if}}
-                                    <div class="section-title">Datasource fields:</div>
-                                    {{#if this.placeholders}}				
+                                    
+                                    {{#if this.placeholders}}		
+                                    <div class="section-title">Placeholders:</div>		
                                         {{> placeholdersBlock this.placeholders}}
                                     {{/if}}  
                                 </div>
@@ -125,7 +126,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Node details</h4>
+                <h4 class="modal-title">Item Detais</h4>
             </div>
             <div class="modal-body">
             </div>
