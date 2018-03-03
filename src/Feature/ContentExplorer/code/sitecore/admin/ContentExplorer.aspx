@@ -32,34 +32,36 @@
         {{#each this}}
         <div class="panel panel-success mb_10"> <%--placeholder-container--%>
             <div class="panel-heading">
-                <h3 class="panel-title">Placeholder key: <b>{{@key}}</b></h3>
+                <h3 class="panel-title">Placeholder: <b>{{@key}}</b></h3>
             </div>
             <div class="panel-body">
                 {{#each this}}                
                         {{#if this.componentName}}
-                            <div class="panel panel-info "> <%--placeholder-container--%>
+                            <div class="panel panel-info ">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Component Name: <b>{{this.componentName}}</b></b></h3>
+                                    <h3 class="panel-title">Component Name: <b>{{this.componentName}}</b></h3>
                                 </div>
                                 <div class="panel-body">
-                                    {{#if this.fields}}				
-                                        <ul>
-                                            {{#each this.fields}}	
+                                    <div class="section-title">Datasource fields:</div>
+                                    {{#if this.fields}}	
+                                         			
+                                        <div>
+                                            {{#each this.fields}}	                                                
                                                 {{#if this.value.src}}	
-                                                <li>{{@key}} : <img src="{{{this.value.src}}}" alt="{{this.value.alt}}" style="width: 100%;" />></li>	
+                                                <div>{{@key}}</div>	
+                                                <div><img src="{{{this.value.src}}}" alt="{{this.value.alt}}" style="width: 100%;" /></div>	
                                                 {{else}}
-                                                <li>{{@key}} : {{{this.value}}}</li>
+                                                <div>{{@key}}</div>	
+                                                <div>{{{this.value}}}</div>	
                                                 {{/if}}			
                                                 
                                             {{/each}}				
-                                        </ul>
+                                        </div>
                                         <hr />
                                     {{else}}
-                                        <ul>
-                                            <li>Component doesn't have any datasource fields</li>				
-                                        </ul>
-                                        <hr />
+                                        <div class="not-found mb_20">Component doesn't have any datasource fields</div>
                                     {{/if}}
+                                    <div class="section-title">Datasource fields:</div>
                                     {{#if this.placeholders}}				
                                         {{> placeholdersBlock this.placeholders}}
                                     {{/if}}  

@@ -59,7 +59,7 @@
             template;
 
         jQuery.ajax({
-            url: '/sitecore/api/layout/render/jss?item=' + (obj.data.path ? obj.data.path : '/') + '&sc_lang=en&sc_apikey={1EEAEFC8-A093-492F-BAB6-00F55B1DAEF5}',
+            url: '/sitecore/api/layout/render/jss?item=' + (obj.data.path ? obj.data.path : '/') + '&sc_lang=en&sc_apikey={1EEAEFC8-A093-492F-BAB6-00F55B1DAEF5}&tracking=true',
             type: 'GET',
             contentType: 'application/json',
             success: function (data) {
