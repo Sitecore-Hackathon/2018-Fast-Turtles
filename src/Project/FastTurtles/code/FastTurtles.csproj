@@ -95,6 +95,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="example\orgChartEditor.html" />
+    <Content Include="scripts\ContentExplorer\main.js" />
     <Content Include="scripts\go\go.js" />
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
