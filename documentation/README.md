@@ -1,68 +1,42 @@
-# Documentation
+# Content Explorer Module Documentation
 
-The documentation for this years Hackathon must be provided as a readme in Markdown format as part of your submission. 
+## Module Purpose
 
-You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
+Our **Content Explorer** module is intended to enable editors have alternative Sitemap view where sitecore items are represented by sitemap tree nodes. Content editors can further explore components available for each page item and preview content of the renderings datasource associated with renderings.
 
-Examples of things to include are the following.
+**Content Explorer** module is built using JSS headless services and emphasizes JSS capabilities and customization options.
 
-## Summary
+Our module will be extremely helpful for clients that use Sitecore headless to populate content in Mobile apps and alternative channels that don't have web view, i.e. where content cannot be previewed in Sitecore Experience Editor.
 
-**Category:** Hackathon Category
+## Module Sitecore Hackathon Category
 
-What is the purpose of your module? What problem does it solve and how does it do that?
+Our category is **JSS**
 
 ## Pre-requisites
 
-Does your module rely on other Sitecore modules or frameworks? 
+* Sitecore 9.0.1 rev. 171219
+* Sitecore JSS 7.0 for Sitecore 9.0 (Tech Preview 2)
 
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
+## Installation Process
 
-## Installation
-
-Provide detailed instructions on how to install the module, and include screenshots where necessary.
-
-1. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-2. ???
-3. Profit
-
-## Configuration
-
-How do you configure your module once it is installed? Are there items that need to be updated with settings, or maybe config files need to have keys updated?
-
-Remember you are using Markdown, you can provide code samples too:
-
-```xml
-<?xml version="1.0"?>
-<!--
-  Purpose: Configuration settings for my hackathon module
--->
-<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
-  <sitecore>
-    <settings>
-      <setting name="MyModule.Setting" value="Hackathon" />
-    </settings>
-  </sitecore>
-</configuration>
-```
+* Install Sitecore 9.0 Update 1
+* Download and install Server Package (Tech Preview 9.0.1 rev. 180228).zip (you can find package here: https://dev.sitecore.net/Downloads/Sitecore_JavaScript_Services/90_Tech_Preview/Sitecore_JavaScript_Services_90_Tech_Preview_2.aspx)
+* Install Fast Turtles-1.1.zip (you can find package here: \sc.package\Fast Turtles-1.1.zip)
+* Go to Launchpad -> Fast Turtles > Content Explorer
 
 ## Usage
 
-Provide documentation  about your module, how do the users use your module, where are things located, what do icons mean, are there any secret shortcuts etc.
+Once installed content editor will get new **Content Explorer** app added to the Sitecore launch pad
 
-Please include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
+![sitecore launchpad](https://user-images.githubusercontent.com/16732500/36940354-93b60492-1f52-11e8-8962-c3f24cecc761.png)
 
-![Hackathon Logo](images/hackathon.png?raw=true "Hackathon Logo")
+Browsing to the **Content Explorer**, editor can see complete sitemap. Each node in the sitemap is represented by sitecore icon,  item name and workflow status. Editor can easily see levels identified by different colors
 
-You can embed images of different formats too:
+![content explorer](https://user-images.githubusercontent.com/16732500/36940395-feed8e9c-1f52-11e8-974b-4a66bc4756e4.png)
 
-![Deal With It](images/deal-with-it.gif?raw=true "Deal With It")
+**Content editor** can dblclick on the sitemap node to see renderings assigned to each node. All these data we are retrieving from JSS Layout Service
 
-And you can embed external images too:
-
-![Random](https://placeimg.com/480/240/any "Random")
+![content explorer - item details](https://user-images.githubusercontent.com/16732500/36940421-74f2573a-1f53-11e8-9470-f0dead0cb073.png)
 
 ## Video
 
