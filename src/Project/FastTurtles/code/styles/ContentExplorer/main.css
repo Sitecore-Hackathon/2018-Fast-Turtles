@@ -7,3 +7,19 @@
     padding: 10px;
     border: 1px solid black;
 }
+
+.presentation-container .panel-body {
+    padding-bottom: 5px;
+}
+
+.presentation-container .panel {
+    margin-bottom: 5px;
+}
+
+.pb_10 {
+    padding-bottom: 10px;
+}
+
+.mb_10 {
+    margin-bottom: 10px !important;
+}

@@ -30,29 +30,41 @@
     <script data-template="placeholdersBlock" type="text/x-handlebars-template">
 
         {{#each this}}
-        <div class="panel panel-default "> <%--placeholder-container--%>
+        <div class="panel panel-success mb_10"> <%--placeholder-container--%>
             <div class="panel-heading">
                 <h3 class="panel-title">Placeholder key: <b>{{@key}}</b></h3>
             </div>
             <div class="panel-body">
-                {{#each this}}
-                        <b>Component Name: {{this.componentName}}</b><br />
-				        {{#if this.fields}}				
-                            <ul>
-                                {{#each this.fields}}						
-                                    <li>{{@key}} : {{this.value}}</li>
-                                {{/each}}				
-                            </ul>
-                <hr />
-                        {{/if}}
-                        {{#if this.placeholders}}				
-                            {{> placeholdersBlock this.placeholders}}
-                        {{/if}}       
+                {{#each this}}                
+                        {{#if this.componentName}}
+                            <div class="panel panel-info "> <%--placeholder-container--%>
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Component Name: <b>{{this.componentName}}</b></b></h3>
+                                </div>
+                                <div class="panel-body">
+                                    {{#if this.fields}}				
+                                        <ul>
+                                            {{#each this.fields}}						
+                                                <li>{{@key}} : {{this.value}}</li>
+                                            {{/each}}				
+                                        </ul>
+                                        <hr />
+                                    {{/if}}
+                                    {{#if this.placeholders}}				
+                                        {{> placeholdersBlock this.placeholders}}
+                                    {{/if}}  
+                                </div>
+                            </div>		
+                            
+				            
+                        {{/if}}     
 			        {{/each}}
             </div>
         </div>	
             
 		{{/each}}
+        
+        
 		
 </script>
 <script data-template="node-item" type="text/x-handlebars-template">
