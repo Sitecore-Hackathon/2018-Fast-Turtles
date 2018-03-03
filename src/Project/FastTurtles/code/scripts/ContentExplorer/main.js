@@ -155,6 +155,14 @@
 function load(data) {
     myDiagram.model = go.Model.fromJson(data);
 }
+function showLoading() {
+    $('.disable-page').show();
+    $('.loader-indicator').show();
+}
+function hideLoading() {
+    $('.disable-page').hide();
+    $('.loader-indicator').hide();
+}
 
 $(document).ready(function () {
     var obj = {};
@@ -172,13 +180,4 @@ $(document).ready(function () {
             hideLoading();
         }
     });
-
-    function showLoading() {
-        $('.disable-page').show();
-        $('.loader-indicator').show();
-    }
-    function hideLoading() {
-        $('.disable-page').hide();
-        $('.loader-indicator').hide();
-    }
 });

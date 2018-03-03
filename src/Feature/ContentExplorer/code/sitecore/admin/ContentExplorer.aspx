@@ -136,12 +136,15 @@
     </script>
 </head>
 <body>
-<div class="disable-page" style="display: none"></div>
-<div class="loader-indicator" style="display: none"></div>
-    <form id="form1" runat="server">
-        <asp:Label ID="IdentifierLabel" runat="server" Text="Identifier: "/>
-        <asp:TextBox ID="IdentifierText" runat="server" Width="224px" TextMode="Email"/>
-        <asp:Button ID="SubmitButton" runat="server" Text="Switch to Contact" OnClick="SwitchToContact" />
+    <div class="disable-page" style="display: none"></div>
+    <div class="loader-indicator" style="display: none"></div>
+    <form id="form1" class="form-inline" runat="server">
+        <div class="row marging-20">
+            <div class="form-group">
+                <asp:TextBox ID="IdentifierText" CssClass="form-control" runat="server" Width="224px" TextMode="Email" placeholder="Identifier" />
+            </div>
+            <asp:Button ID="SubmitButton" runat="server" CssClass="btn btn-primary" Text="Switch to Contact" OnClick="SwitchToContact" />
+        </div>
 <div id="sample">
     <div id="myDiagramDiv" style="background-color: #fff; border: solid 1px black; height: 800px"></div>
 </div>
