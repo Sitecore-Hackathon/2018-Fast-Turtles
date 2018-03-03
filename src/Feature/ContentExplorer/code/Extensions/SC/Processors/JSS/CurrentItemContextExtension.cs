@@ -1,43 +1,44 @@
-﻿using System;
-using System.Linq;
-using ContentExplorer.Model.JSS;
-using Sitecore.Data;
-using Sitecore.Data.Items;
-using Sitecore.LayoutService.Configuration;
-using Sitecore.LayoutService.ItemRendering.Pipelines.GetLayoutServiceContext;
-using Sitecore.Links;
-using Sitecore.Workflows;
-
-namespace ContentExplorer.Extensions.SC.Processors.JSS
+﻿namespace ContentExplorer.Extensions.SC.Processors.JSS
 {
     using ContentExplorer.Helpers;
+    using ContentExplorer.Model.JSS;
 
-    public class CurrentItemContextExtension : Sitecore.JavaScriptServices.ViewEngine.LayoutService.Pipelines.GetLayoutServiceContext.JssGetLayoutServiceContextProcessor
+    using Sitecore.Data;
+    using Sitecore.JavaScriptServices.Configuration;
+    using Sitecore.JavaScriptServices.ViewEngine.LayoutService.Pipelines.GetLayoutServiceContext;
+    using Sitecore.LayoutService.ItemRendering.Pipelines.GetLayoutServiceContext;
+
+    public class CurrentItemContextExtension : JssGetLayoutServiceContextProcessor
     {
         public const string CurrentItemObjectKey = "currentItem";
 
-        public CurrentItemContextExtension(Sitecore.JavaScriptServices.Configuration.IConfigurationResolver configurationResolver) : base(configurationResolver)
-        {
-        }
+        public CurrentItemContextExtension(IConfigurationResolver configurationResolver)
+            : base(configurationResolver) { }
 
-        protected override void DoProcess(GetLayoutServiceContextArgs args,
-            Sitecore.JavaScriptServices.Configuration.AppConfiguration application)
+        protected override void DoProcess(GetLayoutServiceContextArgs args, AppConfiguration application)
         {
-            Item renderedItem = args.RenderedItem;
-            Database database = renderedItem != null ? renderedItem.Database : (Database)null;
+            var renderedItem = args.RenderedItem;
+            var database = renderedItem?.Database;
 
             if (renderedItem == null || database == null)
+            {
                 return;
+            }
 
             var outputObject = new CurrentItemModel
-            {
-                CreatedBy = renderedItem.Statistics.CreatedBy,
-                UpdatedBy = renderedItem.Statistics.UpdatedBy,
-                CountOfVersions = renderedItem.Versions.Count,
-                CurrentVersion = renderedItem.Version.Number,
-                IsPublished = !renderedItem.Publishing.NeverPublish,
-                WorkflowState = renderedItem.GetWorkflowState()
-            };
+                                   {
+                                       ItemId = renderedItem.ID.ToString(),
+                                       Name = renderedItem.Name,
+                                       DisplayName = renderedItem.DisplayName,
+                                       Path = renderedItem.Paths.Path,
+                                       TemplateName = renderedItem.TemplateName,
+                                       CreatedBy = renderedItem.Statistics.CreatedBy,
+                                       UpdatedBy = renderedItem.Statistics.UpdatedBy,
+                                       CountOfVersions = renderedItem.Versions.Count,
+                                       CurrentVersion = renderedItem.Version.Number,
+                                       IsPublished = !renderedItem.Publishing.NeverPublish,
+                                       WorkflowState = renderedItem.GetWorkflowState()
+                                   };
 
             args.ContextData.Add(CurrentItemObjectKey, outputObject);
         }

@@ -25,8 +25,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" type="text/javascript"></script>
     <!-- Bootstrap end-->
 
-    <!-- Bootstrap end-->
-
     <script data-template="placeholdersBlock" type="text/x-handlebars-template">
 
         {{#each this}}
@@ -80,39 +78,70 @@
         
 		
 </script>
-<script data-template="node-item" type="text/x-handlebars-template">
-	<div class="row">
-		<div class="col-sm-5 col-xs-12">
-			<table class="table">
-				<tr>
-					<td>Display Name</td>
-					<td>{{route.displayName}}</td>
-				</tr>
-				<tr>
-					<td>Item ID</td>
-					<td>{{route.itemId}}</td>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td>{{route.name}}</td>
-				</tr>
-			</table>
-		</div>
-		<div class="col-sm-7 col-xs-12">
+    <script data-template="node-item" type="text/x-handlebars-template">
+        <div class="row">
+            <div class="col-sm-5 col-xs-12">
+                <table class="table">
+                    <tr>
+                        <td>Item ID</td>
+                        <td>{{currentItem.itemId}}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{currentItem.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Display Name</td>
+                        <td>{{currentItem.displayName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Item path</td>
+                        <td>{{currentItem.path}}</td>
+                    </tr>
+                    <tr>
+                        <td>Template</td>
+                        <td>{{currentItem.templateName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Created By</td>
+                        <td>{{currentItem.createdBy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Updated By</td>
+                        <td>{{currentItem.updatedBy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Count Of Versions</td>
+                        <td>{{currentItem.countOfVersions}}</td>
+                    </tr>
+                    <tr>
+                        <td>Current Version</td>
+                        <td>{{currentItem.currentVersion}}</td>
+                    </tr>
+                    <tr>
+                        <td>IsPublished</td>
+                        <td>{{currentItem.isPublished}}</td>
+                    </tr>
+                    <tr>
+                        <td>Workflow State</td>
+                        <td>{{currentItem.workflowState}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-7 col-xs-12">
                 <div class="presentation-container">
                     {{> placeholdersBlock route.placeholders}}	
-		</div>
-	</div>
+                </div>
+            </div>
         </div>
-</script>
-    
-    
-
+    </script>
 </head>
 <body>
-    <form id="form1" runat="server">\
-        <asp:Label ID="IdentifierLabel" runat="server" Text="Identifier: "></asp:Label>
-        <asp:TextBox ID="IdentifierText" runat="server" Width="224px" TextMode="Email"></asp:TextBox>
+<div class="disable-page" style="display: none"></div>
+<div class="loader-indicator" style="display: none"></div>
+    <form id="form1" runat="server">
+        <asp:Label ID="IdentifierLabel" runat="server" Text="Identifier: "/>
+        <asp:TextBox ID="IdentifierText" runat="server" Width="224px" TextMode="Email"/>
         <asp:Button ID="SubmitButton" runat="server" Text="Switch to Contact" OnClick="SwitchToContact" />
 <div id="sample">
     <div id="myDiagramDiv" style="background-color: #fff; border: solid 1px black; height: 800px"></div>
@@ -121,7 +150,6 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog" style="width: 1200px;">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
