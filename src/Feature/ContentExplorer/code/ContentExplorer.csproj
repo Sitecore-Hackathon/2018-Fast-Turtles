@@ -107,9 +107,18 @@
     <Compile Include="Extensions\SC\Processors\JSS\CurrentItemContextExtension.cs" />
     <Compile Include="Helpers\ItemHelper.cs" />
     <Compile Include="Model\JSS\CurrentItemModel.cs" />
+    <Compile Include="Model\JSS\TreeItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sitecore\admin\ContentExplorer.aspx.cs">
+      <DependentUpon>ContentExplorer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sitecore\admin\ContentExplorer.aspx.designer.cs">
+      <DependentUpon>ContentExplorer.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sitecore\admin\ContentExplorer.aspx" />
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
   </ItemGroup>

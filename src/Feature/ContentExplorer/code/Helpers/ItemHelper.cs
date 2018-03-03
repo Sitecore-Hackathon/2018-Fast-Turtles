@@ -26,7 +26,9 @@ namespace ContentExplorer.Helpers
 
         public static string GetIcon(this Item item)
         {
-            return ThemeManager.GetIconImage(Sitecore.Context.Item, 32, 32, "", "");
+            if (!item.Fields["__Icon"].HasValue)
+                return "";
+            return "/temp/iconcache/" + item.Fields["__Icon"].Value;
         }
     }
 }

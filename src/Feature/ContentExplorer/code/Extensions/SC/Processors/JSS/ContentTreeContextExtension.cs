@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ContentExplorer.Helpers;
 using ContentExplorer.Model.JSS;
@@ -25,19 +26,28 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
             if (renderedItem == null || database == null)
                 return;
 
-            var allItems =
-                database.SelectItems(renderedItem.Paths.FullPath + "//*").Where(q => q.DoesItemHasPresentationDetails()).Select(q => new
+            var current = new TreeItemModel
+            {
+                key = renderedItem.ID.ToShortID().ToString(),
+                parent = renderedItem.ParentID.ToShortID().ToString(),
+                title = string.IsNullOrWhiteSpace(renderedItem.DisplayName) ? renderedItem.Name : renderedItem.DisplayName,
+                path = renderedItem.GetItemRelativeURL(),
+                icon = "/temp/IconCache/" + renderedItem.Appearance.Icon
+            };
+
+            var result = new List<TreeItemModel>();
+            result.Add(current);
+            result.AddRange(database.SelectItems(renderedItem.Paths.FullPath + "//*")
+                .Where(q => q.DoesItemHasPresentationDetails()).Select(q => new TreeItemModel
                 {
-                    itemID = q.ID.ToShortID().ToString(),
-                    parentID = q.ParentID.ToShortID().ToString(),
+                    key = q.ID.ToShortID().ToString(),
+                    parent = q.ParentID.ToShortID().ToString(),
                     title = string.IsNullOrWhiteSpace(q.DisplayName) ? q.Name : q.DisplayName,
                     path = q.GetItemRelativeURL(),
-                    icon = q.GetIcon()
-                });
+                    icon = "/temp/IconCache/" + q.Appearance.Icon
+                }));
 
-
-
-            args.ContextData.Add(objectKey, allItems);
+            args.ContextData.Add(objectKey, result);
         }
     }
 }
