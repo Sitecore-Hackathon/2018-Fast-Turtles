@@ -15,15 +15,15 @@ namespace ContentExplorer.Processors.Session
 
         public override void Process(InitializeTrackerArgs args)
         {
-            if (args.Session.Contact != null)
-            {
-                return;
-            }
+            //if (args.Session.Contact != null)
+            //{
+            //    return;
+            //}
 
-            if (args.IsNewContact)
-            {
-                return;
-            }
+            //if (args.IsNewContact)
+            //{
+            //    return;
+            //}
 
             string contactIdentifier = Sitecore.Web.WebUtil.GetQueryString(ContactKey);
             if (!IsValidEmail(contactIdentifier))
@@ -32,6 +32,10 @@ namespace ContentExplorer.Processors.Session
             }
 
             var contact =  GetContactByIdentifier(contactIdentifier);
+            if (contact == null)
+            {
+                return;
+            }
 
             //Guid contactID;
 

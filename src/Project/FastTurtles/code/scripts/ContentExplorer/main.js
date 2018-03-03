@@ -58,7 +58,7 @@
             template;
         showLoading();
         jQuery.ajax({
-            url: '/sitecore/api/layout/render/jss?item=' + (obj.data.path ? obj.data.path : '/') + '&sc_lang=en&sc_apikey={1EEAEFC8-A093-492F-BAB6-00F55B1DAEF5}&tracking=true',
+            url: '/sitecore/api/layout/render/jss?item=' + (obj.data.path ? obj.data.path : '/') + '&sc_lang=en&sc_apikey={1EEAEFC8-A093-492F-BAB6-00F55B1DAEF5}&tracking=true&xdbcontactid=qwerty4@gmail.com',
             type: 'GET',
             contentType: 'application/json',
             success: function (data) {
@@ -126,7 +126,7 @@
                             minSize: new go.Size(10, 14),
                             margin: new go.Margin(0, 0, 0, 3)
                         },
-                        new go.Binding("text", "workflow").makeTwoWay()),
+                        new go.Binding("text", "workflow").makeTwoWay()), 
                     $(go.TextBlock, "Template: ", textStyle(),
                         { row: 2, column: 0 }),
                     $(go.TextBlock, textStyle(),
