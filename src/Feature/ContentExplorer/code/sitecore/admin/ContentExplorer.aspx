@@ -107,9 +107,9 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">\
         <asp:Label ID="IdentifierLabel" runat="server" Text="Identifier: "></asp:Label>
-        <asp:TextBox ID="IdentifierText" runat="server" Width="224px"></asp:TextBox>
+        <asp:TextBox ID="IdentifierText" runat="server" Width="224px" TextMode="Email"></asp:TextBox>
         <asp:Button ID="SubmitButton" runat="server" Text="Switch to Contact" OnClick="SwitchToContact" />
 <div id="sample">
     <div id="myDiagramDiv" style="background-color: #fff; border: solid 1px black; height: 800px"></div>
