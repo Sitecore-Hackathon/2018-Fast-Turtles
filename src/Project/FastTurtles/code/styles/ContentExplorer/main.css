@@ -1,0 +1,9 @@
+﻿.presentation-container {
+    border: 1px solid black;
+}
+
+.placeholder-container{
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
+}
