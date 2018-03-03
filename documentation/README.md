@@ -14,7 +14,7 @@ What is the purpose of your module? What problem does it solve and how does it d
 
 ## Pre-requisites
 
-Does your module rely on other Sitecore modules or frameworks?
+Does your module rely on other Sitecore modules or frameworks? 
 
 - List any dependencies
 - Or other modules that must be installed
