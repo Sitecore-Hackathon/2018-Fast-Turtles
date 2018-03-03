@@ -85,7 +85,7 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">\
         <asp:Label ID="IdentifierLabel" runat="server" Text="Identifier: "></asp:Label>
         <asp:TextBox ID="IdentifierText" runat="server" Width="224px"></asp:TextBox>
         <asp:Button ID="SubmitButton" runat="server" Text="Switch to Contact" OnClick="SwitchToContact" />
