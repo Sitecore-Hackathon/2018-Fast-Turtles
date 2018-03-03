@@ -10,6 +10,8 @@ using Sitecore.Workflows;
 
 namespace ContentExplorer.Extensions.SC.Processors.JSS
 {
+    using ContentExplorer.Helpers;
+
     public class CurrentItemContextExtension : Sitecore.JavaScriptServices.ViewEngine.LayoutService.Pipelines.GetLayoutServiceContext.JssGetLayoutServiceContextProcessor
     {
         public const string CurrentItemObjectKey = "currentItem";
@@ -34,12 +36,8 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
                 CountOfVersions = renderedItem.Versions.Count,
                 CurrentVersion = renderedItem.Version.Number,
                 IsPublished = !renderedItem.Publishing.NeverPublish,
-                WorkflowState = String.Empty
+                WorkflowState = renderedItem.GetWorkflowState()
             };
-
-            //IWorkflow workflow = database.WorkflowProvider.GetWorkflow(renderedItem);
-            //WorkflowState state = workflow.GetState(renderedItem);
-            //outputObject.WorkflowState = state.DisplayName;
 
             args.ContextData.Add(CurrentItemObjectKey, outputObject);
         }
