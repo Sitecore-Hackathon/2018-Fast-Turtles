@@ -30,18 +30,5 @@ namespace ContentExplorer.sitecore.admin
                 Response.Redirect("~/sitecore/admin/ContentExplorer.aspx?" + SwitchContact.ContactKey + "=" + IdentifierText.Text.Trim());
             }
         }
-
-        //public static void IdentifyUser(string username)
-        //{
-        //    // Never identify an anonymous user
-        //    if (username.ToLower() == "extranet\\anonymous")
-        //        return;
-
-        //    string identificationSource = "website";
-        //    if (Tracker.Current != null && Tracker.Current.IsActive && Tracker.Current.Session != null)
-        //    {
-        //        Tracker.Current.Session.IdentifyAs(identificationSource, username);
-        //    }
-        //}
     }
 }

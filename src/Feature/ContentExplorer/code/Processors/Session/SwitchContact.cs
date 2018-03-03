@@ -2,6 +2,8 @@
 using Sitecore.Analytics.Tracking;
 using Sitecore.XConnect;
 using System;
+using System.Net.Mail;
+using Sitecore.XConnect.Client;
 
 namespace ContentExplorer.Processors.Session
 {
@@ -23,15 +25,22 @@ namespace ContentExplorer.Processors.Session
                 return;
             }
 
-            string contactIDvalue = Sitecore.Web.WebUtil.GetQueryString(ContactKey);
-            Guid contactID;
-
-            if (!Guid.TryParse(contactIDvalue, out contactID))
+            string contactIdentifier = Sitecore.Web.WebUtil.GetQueryString(ContactKey);
+            if (!IsValidEmail(contactIdentifier))
             {
                 return;
             }
 
-            Sitecore.Diagnostics.Log.Warn("Switching to contact ID. " + contactIDvalue, this);
+            var contact =  GetContactByIdentifier(contactIdentifier);
+
+            //Guid contactID;
+
+            //if (!Guid.TryParse(contactIDvalue, out contactID))
+            //{
+            //    return;
+            //}
+
+            //Sitecore.Diagnostics.Log.Warn("Switching to contact ID. " + contactIDvalue, this);
 
             //Sitecore.Analytics.Tracking.Contact target;
             try
@@ -40,13 +49,45 @@ namespace ContentExplorer.Processors.Session
 
                 Sitecore.Diagnostics.Log.Warn("Could not load contact from xDB param. ", this);
 
-                args.ContactId = contactID;
+                args.ContactId = contact.Id;
                 //args.Session.Contact = target;
             }
             catch (XdbUnavailableException ex)
             {
                 Sitecore.Diagnostics.Log.Error(ex.Message + ex.StackTrace, this);
-                Sitecore.Diagnostics.Log.Debug(string.Format("[Analytics]: The contact '{0}' could not be loaded from the database. Treating the contact as temporary.", (object)contactID));
+                Sitecore.Diagnostics.Log.Debug(string.Format("[Analytics]: The contact '{0}' could not be loaded from the database. Treating the contact as temporary.", (object)contact.Id));
+            }
+        }
+
+        public Sitecore.XConnect.Contact GetContactByIdentifier(string identifier)
+        {
+            using (XConnectClient client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            {
+                try
+                {
+                    var reference = new IdentifiedContactReference("website", identifier);
+
+                    return client.Get<Sitecore.XConnect.Contact>(reference, new ContactExpandOptions() { });
+                }
+                catch (XdbExecutionException ex)
+                {
+                    // Manage exceptions
+                }
+
+                return null;
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
     }
