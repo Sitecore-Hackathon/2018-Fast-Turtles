@@ -1,0 +1,72 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+@using Sitecore.ExperienceForms.Mvc.Html
+@{
+    Layout = "MVCOuterLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@Html.Sitecore().Field("title", new { DisableWebEdit = true })</title>
+
+    <!-- Bootstrap core CSS -->
+    <script src="/sitecore/shell/Controls/Lib/jQuery/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/new-age.min.css" rel="stylesheet">
+    @Html.Sitecore().VisitorIdentification()
+</head>
+
+<body>
+
+
+    <header class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="/assets/img/sc_logo.png" class="position-absolute" style="left: 0;top: 0;position: relative;padding-bottom: 20px;" />
+                @Html.Sitecore().Placeholder("header")
+                <br />
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p style="line-height: 22px;">From a single connected platform that also integrates with other customer-facing platforms, to a single view of the customer in a big data marketing repository, to completely eliminating much of the complexity that has previously held marketers back, the latest version of Sitecore makes customer experience highly achievable. Learn how the latest version of Sitecore gives marketers the complete data, integrated tools, and automation capabilities to engage customers throughout an iterative lifecycle &ndash; the technology foundation absolutely necessary to win customers for life.</p>
+                <p>For further information, please go to the <a href="https://doc.sitecore.net/" target="_blank" title="Sitecore Documentation site">Sitecore Documentation site</a></p>
+            </div>
+        </div>
+        
+
+        @Html.Sitecore().Placeholder("main")
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2018 Bootstrap 4 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- <script src="/assets/vendor/jquery/jquery.min.js"></script>   -->
+
+</body>
+
+</html>
