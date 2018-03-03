@@ -33,7 +33,8 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
                 title = string.IsNullOrWhiteSpace(renderedItem.DisplayName) ? renderedItem.Name : renderedItem.DisplayName,
                 path = renderedItem.GetItemRelativeURL(),
                 icon = "/temp/IconCache/" + renderedItem.Appearance.Icon,
-                workflow = renderedItem.GetWorkflowState()
+                workflow = renderedItem.GetWorkflowState(),
+                template = renderedItem.TemplateName
             };
 
             var result = new List<TreeItemModel>();
@@ -46,7 +47,8 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
                     title = string.IsNullOrWhiteSpace(q.DisplayName) ? q.Name : q.DisplayName,
                     path = q.GetItemRelativeURL(),
                     icon = "/temp/IconCache/" + q.Appearance.Icon,
-                    workflow = q.GetWorkflowState()
+                    workflow = q.GetWorkflowState(),
+                    template = q.TemplateName
                 }));
 
             args.ContextData.Add(objectKey, result);
