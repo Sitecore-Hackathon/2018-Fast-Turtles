@@ -41,7 +41,6 @@
     };
 
     myDiagram.toolManager.panningTool.isEnabled = false;
-    var nodeIdCounter = -1; // use a sequence to guarantee key uniqueness as we add/remove/modify nodes
 
     // This function provides a common style for most of the TextBlocks.
     // Some of these values may be overridden in a particular TextBlock.
@@ -57,7 +56,7 @@
     function nodeClick(e, obj) {
         var source,
             template;
-
+        showLoading();
         jQuery.ajax({
             url: '/sitecore/api/layout/render/jss?item=' + (obj.data.path ? obj.data.path : '/') + '&sc_lang=en&sc_apikey={1EEAEFC8-A093-492F-BAB6-00F55B1DAEF5}',
             type: 'GET',
@@ -70,7 +69,7 @@
                 console.log(data.sitecore);
                 jQuery('#myModal').find('.modal-body').html(template(data.sitecore));
                 jQuery('#myModal').modal('show');
-
+                hideLoading();
             }
         });
     }
@@ -161,16 +160,25 @@ $(document).ready(function () {
     var obj = {};
 
     obj.class = "go.TreeModel";
-
+    showLoading();
     $.ajax({
         url: '/sitecore/api/layout/render/jss?item=/&sc_lang=en&sc_apikey={1EEAEFC8-A093-492F-BAB6-00F55B1DAEF5}',
         type: 'GET',
         contentType: 'application/json',
         success: function (data) {
-
             obj.nodeDataArray = data.sitecore.context.contentTree;
             console.log(obj);
             init(obj);
+            hideLoading();
         }
     });
+
+    function showLoading() {
+        $('.disable-page').show();
+        $('.loader-indicator').show();
+    }
+    function hideLoading() {
+        $('.disable-page').hide();
+        $('.loader-indicator').hide();
+    }
 });
