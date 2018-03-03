@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ContentExplorer.aspx.cs" Inherits="ContentExplorer.sitecore.admin.ContentExplorer" %>
+<%@ Register TagPrefix="sc" Namespace="Sitecore.Web.UI.WebControls" Assembly="Sitecore.Analytics" %>
 
 <!DOCTYPE html>
 
@@ -17,7 +18,7 @@
     <script src="/scripts/go/go.js"></script>
     <script src="/scripts/ContentExplorer/main.js"></script>
 
-
+    <sc:VisitorIdentification runat="server" /> 
     <!-- Bootstrap begin-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

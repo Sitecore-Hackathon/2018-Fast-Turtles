@@ -33,13 +33,9 @@
     <link href="/assets/css/new-age.min.css" rel="stylesheet">
     @Html.Sitecore().VisitorIdentification()
     
-    @{
-        var currentContact = Sitecore.Analytics.Tracker.Current.Contact.ContactId;
-    }
 </head>
 
 <body>
-@currentContact
 <header class="container">
     <div class="row">
         <div class="col-lg-12">

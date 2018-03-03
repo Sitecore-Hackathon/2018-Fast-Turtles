@@ -16,36 +16,22 @@ namespace ContentExplorer.Processors.Session
 
         public override void Process(InitializeTrackerArgs args)
         {
-            //if (args.Session.Contact != null)
-            //{
-            //    return;
-            //}
-
-            //if (args.IsNewContact)
-            //{
-            //    return;
-            //}
-
             string contactIdentifier = Sitecore.Web.WebUtil.GetQueryString(ContactKey);
             if (!IsValidEmail(contactIdentifier))
             {
                 return;
             }
 
+            Sitecore.Analytics.Tracker.Initialize();
+            Sitecore.Analytics.Tracker.StartTracking();
+        
+             Sitecore.Analytics.Tracker.Current.Session.IdentifyAs("website", contactIdentifier);
+
             var contact =  GetContactByIdentifier(contactIdentifier);
             if (contact == null || !contact.Id.HasValue)
             {
                 return;
             }
-
-            //Guid contactID;
-
-            //if (!Guid.TryParse(contactIDvalue, out contactID))
-            //{
-            //    return;
-            //}
-
-            //Sitecore.Diagnostics.Log.Warn("Switching to contact ID. " + contactIDvalue, this);
 
             Sitecore.Analytics.Tracking.Contact target;
             try
@@ -54,10 +40,9 @@ namespace ContentExplorer.Processors.Session
                 target = this.ContactManager.LoadContact(contact.Id.Value, !args.Session.IsReadOnly);
                 if(target == null) { 
                     Sitecore.Diagnostics.Log.Warn("Could not load contact from xDB param. ", this);
-                    return;
                 }
 
-                //args.ContactId = contact.Id;
+                args.ContactId = contact.Id;
                 args.Session.Contact = target;
             }
             catch (XdbUnavailableException ex)
@@ -96,29 +81,6 @@ namespace ContentExplorer.Processors.Session
             catch
             {
                 return false;
-            }
-        }
-
-        public void Example()
-        {
-            using (Sitecore.XConnect.Client.XConnectClient client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
-            {
-                try
-                {
-                    var contact = new Sitecore.XConnect.Contact(
-                        new Sitecore.XConnect.ContactIdentifier("twitter", "myrtlesitecore", Sitecore.XConnect.ContactIdentifierType.Known)
-                    );
-
-                    client.AddContactIdentifier(contact, new Sitecore.XConnect.ContactIdentifier("ad-network", "ABC123456", Sitecore.XConnect.ContactIdentifierType.Anonymous));
-
-                    IReadOnlyCollection<Sitecore.XConnect.ContactIdentifier> identifiers = contact.Identifiers;
-
-                    client.Submit();
-                }
-                catch (XdbExecutionException ex)
-                {
-                    // Manage exception
-                }
             }
         }
     }

@@ -27,7 +27,13 @@ namespace ContentExplorer.sitecore.admin
         {
             if (!string.IsNullOrEmpty(IdentifierText.Text.Trim()))
             {
-                Response.Redirect("~/sitecore/admin/ContentExplorer.aspx?" + SwitchContact.ContactKey + "=" + IdentifierText.Text.Trim());
+                if (!Sitecore.Analytics.Tracker.IsActive || Sitecore.Analytics.Tracker.Current == null)
+                {
+                    Sitecore.Analytics.Tracker.Initialize();
+                    Sitecore.Analytics.Tracker.StartTracking();
+                }
+                Sitecore.Analytics.Tracker.Current.Session.IdentifyAs("website", IdentifierText.Text.Trim());
+                //Response.Redirect("~/sitecore/admin/ContentExplorer.aspx?" + SwitchContact.ContactKey + "=" + IdentifierText.Text.Trim());
             }
         }
     }
