@@ -28,7 +28,7 @@
     <!-- Bootstrap end-->
 
     <script data-template="placeholdersBlock" type="text/x-handlebars-template">
-        
+
         {{#each this}}
         <div class="panel panel-default "> <%--placeholder-container--%>
             <div class="panel-heading">
@@ -51,64 +51,68 @@
         </div>	
             
 		{{/each}}
-        
-    </script>
-    <script data-template="node-item" type="text/x-handlebars-template">
-        <div class="row">
-            <div class="col-sm-5 col-xs-12">
-                <table class="table">
-                    <tr>
-                        <td>Display Name</td>
-                        <td>{{route.displayName}}</td>
-                    </tr>
-                    <tr>
-                        <td>Item ID</td>
-                        <td>{{route.itemId}}</td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>{{route.name}}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-sm-7 col-xs-12">
+		
+</script>
+<script data-template="node-item" type="text/x-handlebars-template">
+	<div class="row">
+		<div class="col-sm-5 col-xs-12">
+			<table class="table">
+				<tr>
+					<td>Display Name</td>
+					<td>{{route.displayName}}</td>
+				</tr>
+				<tr>
+					<td>Item ID</td>
+					<td>{{route.itemId}}</td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td>{{route.name}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-sm-7 col-xs-12">
                 <div class="presentation-container">
                     {{> placeholdersBlock route.placeholders}}	
-                </div>
-            </div>
+		</div>
+	</div>
         </div>
-    </script>
+</script>
     
     
 
 </head>
 <body>
     <form id="form1" runat="server">
-    </form>
-    <div id="sample">
-        <div id="myDiagramDiv" style="background-color: #fff; border: solid 1px black; height: 800px"></div>
-    </div>
+        <asp:Label ID="IdentifierLabel" runat="server" Text="Identifier: "></asp:Label>
+        <asp:TextBox ID="IdentifierText" runat="server" Width="224px"></asp:TextBox>
+        <asp:Button ID="SubmitButton" runat="server" Text="Switch to Contact" OnClick="SwitchToContact" />
+<div id="sample">
+    <div id="myDiagramDiv" style="background-color: #fff; border: solid 1px black; height: 800px"></div>
+</div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog" style="width: 1200px;">
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 1200px;">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Node details</h4>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Node details</h4>
             </div>
-
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
+
     </div>
-    <!-- Modal end -->
+</div>
+<!-- Modal end -->
+
+    </form>
 
 </body>
 </html>
