@@ -8,5 +8,6 @@
         public string path { get; set; }
         public string icon { get; set; }
         public string workflow { get; set; }
+        public string template { get; set; }
     }
 }
