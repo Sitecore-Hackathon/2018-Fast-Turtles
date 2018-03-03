@@ -64,7 +64,24 @@ namespace ContentExplorer.Processors.Session
             }
         }
 
-        
+        public Sitecore.XConnect.Contact GetContactByIdentifier(string identifier)
+        {
+            using (XConnectClient client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            {
+                try
+                {
+                    var reference = new IdentifiedContactReference("website", identifier);
+
+                    return client.Get<Sitecore.XConnect.Contact>(reference, new ContactExpandOptions() { });
+                }
+                catch (XdbExecutionException ex)
+                {
+                    // Manage exceptions
+                }
+
+                return null;
+            }
+        }
 
         private bool IsValidEmail(string email)
         {

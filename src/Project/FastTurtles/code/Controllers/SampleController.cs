@@ -24,6 +24,11 @@
             }
         }
 
+        public ActionResult AddContactUser()
+        {
+            return this.View();
+        }
+
         [HttpPost]
         public void AddContactUser(ContactViewModel viewModel) { }
 
