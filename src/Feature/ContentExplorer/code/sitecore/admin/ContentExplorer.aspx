@@ -44,9 +44,19 @@
                                 <div class="panel-body">
                                     {{#if this.fields}}				
                                         <ul>
-                                            {{#each this.fields}}						
-                                                <li>{{@key}} : {{this.value}}</li>
+                                            {{#each this.fields}}	
+                                                {{#if this.value.src}}	
+                                                <li>{{@key}} : <img src="{{{this.value.src}}}" alt="{{this.value.alt}}" style="width: 100%;" />></li>	
+                                                {{else}}
+                                                <li>{{@key}} : {{{this.value}}}</li>
+                                                {{/if}}			
+                                                
                                             {{/each}}				
+                                        </ul>
+                                        <hr />
+                                    {{else}}
+                                        <ul>
+                                            <li>Component doesn't have any datasource fields</li>				
                                         </ul>
                                         <hr />
                                     {{/if}}
