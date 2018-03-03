@@ -23,6 +23,21 @@
 .mb_10 {
     margin-bottom: 10px !important;
 }
+
+.mb_15 {
+    margin-bottom: 10px !important;
+}
+.mb_20 {
+    margin-bottom: 10px !important;
+}
+
+.not-found {
+    font-style: italic;
+}
+
+.section-title {
+    font-weight: bold;
+}
 .disable-page {
     z-index: 10001 !important;
     background: #aaa;
