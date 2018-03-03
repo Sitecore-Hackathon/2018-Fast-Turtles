@@ -132,7 +132,7 @@
                         { row: 2, column: 0 }),
                     $(go.TextBlock, textStyle(),
                         {
-                            row: 2, column: 2, columnSpan: 4,
+                            row: 2, column: 1, columnSpan: 4,
                             editable: false,
                             isMultiline: false,
                             minSize: new go.Size(10, 14),
