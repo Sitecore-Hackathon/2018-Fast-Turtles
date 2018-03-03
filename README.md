@@ -1,4 +1,4 @@
-![Hackathon Logo](documentation/images/hackathon.png?raw=true "Hackathon Logo")
+﻿![Hackathon Logo](documentation/images/hackathon.png?raw=true "Hackathon Logo")
 
 # Submission Boilerplate
 
@@ -16,7 +16,9 @@ All teams are required to submit the following as part of their entry submission
 **Failure to meet any of the requirements will result in automatic disqualification.** Please reach out to any of the organisers or judges if you require any clarification.
 
 - Sitecore 9.0 Update 1 Module (Module install package)
-   - An installation Sitecore Package (`.zip` or `.update`)
+   - Download and install Server Package (Tech Preview 9.0.1 rev. 180228).zip (you can find package here: https://dev.sitecore.net/Downloads/Sitecore_JavaScript_Services/90_Tech_Preview/Sitecore_JavaScript_Services_90_Tech_Preview_2.aspx)
+   - Install Fast Turtles-1.1.zip (you can find package here: \sc.package\Fast Turtles-1.1.zip)
+   - Go to Launchpad -> Fast Turtles > Content Explorer
 
 - Module code in a public Git source repository. We will be judging (amongst other things):
   - Cleanliness of code
