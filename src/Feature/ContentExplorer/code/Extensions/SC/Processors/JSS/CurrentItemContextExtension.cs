@@ -9,7 +9,7 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
 {
     public class CurrentItemContextExtension : Sitecore.JavaScriptServices.ViewEngine.LayoutService.Pipelines.GetLayoutServiceContext.JssGetLayoutServiceContextProcessor
     {
-        public const string FooterNavigationKey = "footerNavigation";
+        public const string CurrentItemObjectKey = "footerNavigation";
 
         public CurrentItemContextExtension(Sitecore.JavaScriptServices.Configuration.IConfigurationResolver configurationResolver) : base(configurationResolver)
         {
@@ -18,7 +18,13 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
         protected override void DoProcess(GetLayoutServiceContextArgs args,
             Sitecore.JavaScriptServices.Configuration.AppConfiguration application)
         {
-            throw new NotImplementedException();
+            Item renderedItem = args.RenderedItem;
+            Database database = renderedItem != null ? renderedItem.Database : (Database)null;
+
+            if (renderedItem == null || database == null)
+                return;
+
+            args.ContextData.Add(CurrentItemObjectKey, "works");
         }
     }
 }

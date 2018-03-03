@@ -103,13 +103,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\SC\Processors\JSS\CurrentItemContextExtension.cs" />
+    <Compile Include="Model\JSS\CurrentItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="App_Config\Include\ContentExplorer\ContentExplorer.JSS.Core.config" />
+    <None Include="Properties\PublishProfiles\APR.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
