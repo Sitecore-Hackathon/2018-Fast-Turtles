@@ -81,50 +81,50 @@
     <script data-template="node-item" type="text/x-handlebars-template">
         <div class="row">
             <div class="col-sm-5 col-xs-12">
-                <table class="table">
+                <table class="table details">
                     <tr>
                         <td>Item ID</td>
-                        <td>{{currentItem.itemId}}</td>
+                        <td>{{context.currentItem.itemId}}</td>
                     </tr>
                     <tr>
                         <td>Name</td>
-                        <td>{{currentItem.name}}</td>
+                        <td>{{context.currentItem.name}}</td>
                     </tr>
                     <tr>
                         <td>Display Name</td>
-                        <td>{{currentItem.displayName}}</td>
+                        <td>{{context.currentItem.displayName}}</td>
                     </tr>
                     <tr>
                         <td>Item path</td>
-                        <td>{{currentItem.path}}</td>
+                        <td>{{context.currentItem.path}}</td>
                     </tr>
                     <tr>
                         <td>Template</td>
-                        <td>{{currentItem.templateName}}</td>
+                        <td>{{context.currentItem.templateName}}</td>
                     </tr>
                     <tr>
                         <td>Created By</td>
-                        <td>{{currentItem.createdBy}}</td>
+                        <td>{{context.currentItem.createdBy}}</td>
                     </tr>
                     <tr>
                         <td>Updated By</td>
-                        <td>{{currentItem.updatedBy}}</td>
+                        <td>{{context.currentItem.updatedBy}}</td>
                     </tr>
                     <tr>
                         <td>Count Of Versions</td>
-                        <td>{{currentItem.countOfVersions}}</td>
+                        <td>{{context.currentItem.countOfVersions}}</td>
                     </tr>
                     <tr>
                         <td>Current Version</td>
-                        <td>{{currentItem.currentVersion}}</td>
+                        <td>{{context.currentItem.currentVersion}}</td>
                     </tr>
                     <tr>
                         <td>IsPublished</td>
-                        <td>{{currentItem.isPublished}}</td>
+                        <td>{{context.currentItem.isPublished}}</td>
                     </tr>
                     <tr>
                         <td>Workflow State</td>
-                        <td>{{currentItem.workflowState}}</td>
+                        <td>{{context.currentItem.workflowState}}</td>
                     </tr>
                 </table>
             </div>
@@ -137,14 +137,17 @@
     </script>
 </head>
 <body>
-<div class="disable-page" style="display: none"></div>
-<div class="loader-indicator" style="display: none"></div>
-    <form id="form1" runat="server">
-        <asp:Label ID="IdentifierLabel" runat="server" Text="Identifier: "/>
-        <asp:TextBox ID="IdentifierText" runat="server" Width="224px" TextMode="Email"/>
-        <asp:Button ID="SubmitButton" runat="server" Text="Switch to Contact" OnClick="SwitchToContact" />
+    <div class="disable-page" style="display: none"></div>
+    <div class="loader-indicator" style="display: none"></div>
+    <form id="form1" class="form-inline" runat="server">
+        <div class="row marging-20">
+            <div class="form-group">
+                <asp:TextBox ID="IdentifierText" CssClass="form-control" runat="server" Width="224px" TextMode="Email" placeholder="Identifier" />
+            </div>
+            <asp:Button ID="SubmitButton" runat="server" CssClass="btn btn-primary" Text="Switch to Contact" OnClick="SwitchToContact" />
+        </div>
 <div id="sample">
-    <div id="myDiagramDiv" style="background-color: #fff; border: solid 1px black; height: 800px"></div>
+    <div id="myDiagramDiv"></div>
 </div>
 
 <!-- Modal -->

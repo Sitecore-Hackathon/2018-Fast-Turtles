@@ -1,41 +1,42 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using Sitecore.Analytics;
-using Sitecore.Analytics.Tracking;
-using Sitecore.Mvc.Controllers;
-using Sitecore.Web;
-using Sitecore.XConnect;
-using Sitecore.XConnect.Client;
-using Sitecore.XConnect.Collection.Model;
-using Contact = Sitecore.XConnect.Contact;
-using Interaction = Sitecore.XConnect.Interaction;
-
+﻿
 namespace FastTurtles
 {
+    using System.Web.Mvc;
+    using FastTurtles.Model;
+    using System;
+    using System.Threading.Tasks;
+    using Sitecore.Analytics;
+    using Sitecore.Analytics.Tracking;
+    using Sitecore.Mvc.Controllers;
+    using Sitecore.XConnect;
+    using Sitecore.XConnect.Client;
+    using Sitecore.XConnect.Collection.Model;
+    using Contact = Sitecore.XConnect.Contact;
+    using Interaction = Sitecore.XConnect.Interaction;
+
     public class SampleController : SitecoreController
     {
-        // GET
-        
-        
         [HttpPost]
-        public ActionResult IdentifyContact(string email)
+        public JsonResult AddContactUser(ContactViewModel viewModel)
         {
-            if (!string.IsNullOrWhiteSpace(email))
+            bool result = false;
+            if (viewModel != null && !string.IsNullOrWhiteSpace(viewModel.Email))
             {
-                //Task.Run(() => CreateContact("website", email));
+                result = Task.Run(() => CreateContact("website", viewModel.Email, viewModel.FirstName, viewModel.LastName, viewModel.Email)).Result;
             }
 
-            return View();
+            return Json(result);
         }
 
-        protected async Task<bool> CreateContact(string source, string identifier, string firstName, string lastName, string email)
+        protected async Task<bool> CreateContact(string source, string identifier, string firstName, string lastName,
+            string email)
         {
             using (XConnectClient client = GetClient())
             {
                 try
                 {
                     IdentifiedContactReference reference = new IdentifiedContactReference(source, identifier);
+
 
                     var contactTask = client.GetAsync<Contact>(
                         reference,
@@ -54,8 +55,8 @@ namespace FastTurtles
 
                     var contactIdentifier = new[]
                     {
-                        new ContactIdentifier(source, identifier, ContactIdentifierType.Known)
-                    };
+                    new ContactIdentifier(source, identifier, ContactIdentifierType.Known)
+                };
 
                     Contact contact = new Contact(contactIdentifier);
 
@@ -87,6 +88,7 @@ namespace FastTurtles
                     return false;
                 }
             }
+
         }
 
         protected XConnectClient GetClient()

@@ -66,3 +66,15 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.175);
     z-index: 10001;
 }
+
+.details tr td:first-child {
+    font-weight: bold;
+}
+
+#myDiagramDiv {
+    background-color: #fff; 
+    border: solid 1px black;
+    height: 800px;
+    margin: 20px;
+            
+}

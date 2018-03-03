@@ -1,0 +1,12 @@
+﻿@model FastTurtles.Model.ContactViewModel
+<div class="row mt-4">
+    @using (Html.BeginRouteForm(Sitecore.Mvc.Configuration.MvcSettings.SitecoreRouteName, FormMethod.Post))
+    {
+        @Html.Sitecore().FormHandler("Sample", "AddContactUser")
+        @Html.EditorFor(x => x.Email)
+        @Html.EditorFor(x => x.FirstName)
+        @Html.EditorFor(x => x.LastName)
+
+        <input type="submit" />
+    }
+</div>  
