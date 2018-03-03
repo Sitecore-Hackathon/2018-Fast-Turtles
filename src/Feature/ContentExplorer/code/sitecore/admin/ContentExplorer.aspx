@@ -36,16 +36,18 @@
             </div>
             <div class="panel-body">
                 {{#each this}}
+                        <b>Component Name: {{this.componentName}}</b><br />
 				        {{#if this.fields}}				
                             <ul>
                                 {{#each this.fields}}						
                                     <li>{{@key}} : {{this.value}}</li>
                                 {{/each}}				
                             </ul>
+                <hr />
                         {{/if}}
                         {{#if this.placeholders}}				
                             {{> placeholdersBlock this.placeholders}}
-                        {{/if}}                    
+                        {{/if}}       
 			        {{/each}}
             </div>
         </div>	

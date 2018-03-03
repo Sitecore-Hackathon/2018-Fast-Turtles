@@ -130,6 +130,8 @@
     <Content Include="Views\Shared\FullWidthBlock.cshtml" />
     <Content Include="Views\Shared\MVCOuterLayout.cshtml" />
     <Content Include="Views\Shared\TextBlock.cshtml" />
+    <Content Include="Views\Shared\Banner.cshtml" />
+    <Content Include="Views\Shared\ThreeColumnBlock.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
