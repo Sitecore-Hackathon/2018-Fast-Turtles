@@ -33,7 +33,7 @@ namespace ContentExplorer.Processors.Session
             }
 
             var contact =  GetContactByIdentifier(contactIdentifier);
-            if (contact == null)
+            if (contact == null || !contact.Id.HasValue)
             {
                 return;
             }
@@ -47,15 +47,18 @@ namespace ContentExplorer.Processors.Session
 
             //Sitecore.Diagnostics.Log.Warn("Switching to contact ID. " + contactIDvalue, this);
 
-            //Sitecore.Analytics.Tracking.Contact target;
+            Sitecore.Analytics.Tracking.Contact target;
             try
             {
-                //target = this.ContactManager.LoadContact(contactID, !args.Session.IsReadOnly);
+                
+                target = this.ContactManager.LoadContact(contact.Id.Value, !args.Session.IsReadOnly);
+                if(target == null) { 
+                    Sitecore.Diagnostics.Log.Warn("Could not load contact from xDB param. ", this);
+                    return;
+                }
 
-                Sitecore.Diagnostics.Log.Warn("Could not load contact from xDB param. ", this);
-
-                args.ContactId = contact.Id;
-                //args.Session.Contact = target;
+                //args.ContactId = contact.Id;
+                args.Session.Contact = target;
             }
             catch (XdbUnavailableException ex)
             {

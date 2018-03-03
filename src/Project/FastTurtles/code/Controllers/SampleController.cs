@@ -1,4 +1,6 @@
 ﻿
+using Sitecore.XConnect.Collection.Model;
+
 namespace FastTurtles
 {
     using System.Web.Mvc;
@@ -10,12 +12,16 @@ namespace FastTurtles
     using Sitecore.Mvc.Controllers;
     using Sitecore.XConnect;
     using Sitecore.XConnect.Client;
-    using Sitecore.XConnect.Collection.Model;
     using Contact = Sitecore.XConnect.Contact;
     using Interaction = Sitecore.XConnect.Interaction;
 
     public class SampleController : SitecoreController
     {
+        public ActionResult AddContactUser()
+        {
+            return View("~/Views/Shared/CreateContact.cshtml");
+        }
+
         [HttpPost]
         public JsonResult AddContactUser(ContactViewModel viewModel)
         {
