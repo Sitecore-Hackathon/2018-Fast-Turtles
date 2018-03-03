@@ -32,7 +32,8 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
                 parent = renderedItem.ParentID.ToShortID().ToString(),
                 title = string.IsNullOrWhiteSpace(renderedItem.DisplayName) ? renderedItem.Name : renderedItem.DisplayName,
                 path = renderedItem.GetItemRelativeURL(),
-                icon = "/temp/IconCache/" + renderedItem.Appearance.Icon
+                icon = "/temp/IconCache/" + renderedItem.Appearance.Icon,
+                workflow = renderedItem.GetWorkflowState()
             };
 
             var result = new List<TreeItemModel>();
@@ -44,7 +45,8 @@ namespace ContentExplorer.Extensions.SC.Processors.JSS
                     parent = q.ParentID.ToShortID().ToString(),
                     title = string.IsNullOrWhiteSpace(q.DisplayName) ? q.Name : q.DisplayName,
                     path = q.GetItemRelativeURL(),
-                    icon = "/temp/IconCache/" + q.Appearance.Icon
+                    icon = "/temp/IconCache/" + q.Appearance.Icon,
+                    workflow = q.GetWorkflowState()
                 }));
 
             args.ContextData.Add(objectKey, result);

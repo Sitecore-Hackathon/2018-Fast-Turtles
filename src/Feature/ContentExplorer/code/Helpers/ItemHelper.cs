@@ -4,6 +4,9 @@ using Sitecore.Data.Managers;
 
 namespace ContentExplorer.Helpers
 {
+    using Sitecore.Configuration;
+    using Sitecore.Data;
+
     public static class ItemHelper
     {
         public static bool DoesItemHasPresentationDetails(this Item item)
@@ -29,6 +32,14 @@ namespace ContentExplorer.Helpers
             if (!item.Fields["__Icon"].HasValue)
                 return "";
             return "/temp/iconcache/" + item.Fields["__Icon"].Value;
+        }
+
+        public static string GetWorkflowState(this Item item)
+        {
+            var database = Factory.GetDatabase("master");
+            var workflow = database.WorkflowProvider.GetWorkflow(item);
+            var state = workflow?.GetState(item);
+            return state != null ? state.DisplayName : string.Empty;
         }
     }
 }
