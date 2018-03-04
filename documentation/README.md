@@ -39,10 +39,9 @@ Browsing to the **Content Explorer**, editor can see complete sitemap. Each node
 ![content explorer - item details](https://user-images.githubusercontent.com/16732500/36940421-74f2573a-1f53-11e8-9470-f0dead0cb073.png)
 
 ## Video
-Our video: [direct link](https://www.screencast.com/t/ij4r3RXpb)
-Please provide a video highlighing your Hackathon module submission and provide a link to the video. Either a [direct link](C:\Users\apr.BRIMIT\Desktop\2018-03-04_0206.swf) to the video, upload it to this documentation folder or maybe upload it to Youtube...
+Our video: 
 
-[![Sitecore Hackathon Video Embedding Alt Text](https://img.youtube.com/vi/EpNhxW4pNKk/0.jpg)](https://www.youtube.com/watch?v=EpNhxW4pNKk)
+[![Content Explorer Introdaction Video](https://img.youtube.com/vi/yKIwGailSNw/0.jpg)](https://youtu.be/yKIwGailSNw)
 
 ## Module Future scope
 
