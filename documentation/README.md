@@ -43,3 +43,8 @@ Our video: [direct link](https://www.screencast.com/t/ij4r3RXpb)
 Please provide a video highlighing your Hackathon module submission and provide a link to the video. Either a [direct link](C:\Users\apr.BRIMIT\Desktop\2018-03-04_0206.swf) to the video, upload it to this documentation folder or maybe upload it to Youtube...
 
 [![Sitecore Hackathon Video Embedding Alt Text](https://img.youtube.com/vi/EpNhxW4pNKk/0.jpg)](https://www.youtube.com/watch?v=EpNhxW4pNKk)
+
+## Module Future scope
+
+Our team will further work to implement more features at a later stage. We will enable switching Content Explorer to a different Sitecore site, select Context language. We will extend sitemap node data to show more information (i.e. workflow state, author, publishing state, etc).
+
